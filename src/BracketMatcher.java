@@ -4,12 +4,7 @@ public class BracketMatcher {
     char[] closearray = {')', ']', '}', '>'};
 
 
-    /**
-     * initiator
-     */
-    public BracketMatcher(){
 
-    }
 
     /**
      *
@@ -19,6 +14,8 @@ public class BracketMatcher {
      */
     //BracketMatcher class
     public boolean isOpeningBracket(char c) {
+        if (0<=find(c,openarray)) return true;
+        else return false;
 
     }
 
@@ -29,6 +26,27 @@ public class BracketMatcher {
      * use find method search closed array list for char c
      */
     public boolean isClosingBracket(char c) {
+        if (0<=find(c,closearray)) return true;
+        else return false;
+
+    }
+
+
+
+    /**
+     *
+     * @param c
+     * @param A
+     * @return int
+     * iterate through array A to find c.
+     * returns index if found
+     * else returns -1
+     */
+    public int find(char c, char[] A) {
+        for (int i = 0; i < A.length; i++){
+            if (A[i] == c) return i;
+        }
+        return -1;
 
     }
 
@@ -43,24 +61,8 @@ public class BracketMatcher {
      * else return false
      */
     public boolean corresponds(char open, char close) {
-
-    }
-
-
-    /**
-     *
-     * @param c
-     * @param A
-     * @return int
-     * iterate through array A to find c.
-     * returns index if found
-     * else returns -1
-     */
-    public int find(char c, A[]) {
-        for (int i = 0; i < A.length; i++){
-            if (A[i] == c) return i;
-        }
-        return -1;
+        if (find(open,openarray) == find(close,closearray))return true;
+        else return false;
 
     }
 
