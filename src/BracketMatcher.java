@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BracketMatcher {
     //arrays for open and closed
     char[] openarray = {'(', '[', '{', '<'};
@@ -64,6 +66,66 @@ public class BracketMatcher {
         if (find(open,openarray) == find(close,closearray))return true;
         else return false;
 
+    }
+
+    public boolean checkBrackets(String s) {
+
+        SinglyLinkedStack<Character> openParen = new SinglyLinkedStack<>();
+        boolean done = false;
+
+
+
+        //create a scanner object
+
+
+        if (s.isEmpty()) {
+            return false;
+        }
+        else {
+            for (int i=0; i<s.length(); i++){
+                String newParen = String.valueOf(s.charAt(i)); //maybe find different way
+                if (isOpeningBracket(s.charAt(i))) {
+                    openParen.push(s.charAt(i));
+                }
+
+                else if (openParen.isEmpty()){
+
+                    System.out.println("error at: " + i);
+                    return false;
+                }
+                else if (corresponds(openParen.top(),s.charAt(i))) {
+                    //System.out.println(s.charAt(i));
+                    //System.out.println(openParen.pop());
+                    openParen.pop();
+
+                }
+
+                else {
+                    System.out.println("error at: " + i);
+                    return false;
+                }
+
+
+
+
+            }
+            if (openParen.isEmpty() && done == false){
+                return true;
+            }
+            else if (done == false){
+                System.out.println("error at: " + i);
+                return false;
+
+            }
+        }
+
+
+        //if stack is completely empty
+        //else string is not matched
+        //if parenTests.corresponds() //this will be the boolean
+
+
+        return done;
     }
 
 
