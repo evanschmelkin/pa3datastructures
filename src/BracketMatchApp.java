@@ -13,11 +13,12 @@ public class BracketMatchApp {
 
         if (parenTests.checkBrackets(s)) {
             System.out.println("Success!");
-        }
-        else {
-            System.out.println("Failure!");
-        }
+        } else {
+            {
+                System.out.println("Failure!");
+            }
 
 
+        }
     }
 }

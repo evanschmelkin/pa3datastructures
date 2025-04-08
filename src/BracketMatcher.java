@@ -89,16 +89,17 @@ public class BracketMatcher {
                 if (isOpeningBracket(s.charAt(i))) {
                     openParen.push(s.charAt(i));
                 }
-
+//isClosingBracket(s.charAt(i))
                 else if (openParen.isEmpty()){
 
                     System.out.println("error at: " + i);
                     return false;
                 }
-                else if (corresponds(openParen.top(),s.charAt(i))) {
+                else if (isClosingBracket(s.charAt(i))) {
                     //System.out.println(s.charAt(i));
                     //System.out.println(openParen.pop());
-                    openParen.pop();
+                    if (corresponds(openParen.top(),s.charAt(i)))
+                        openParen.pop();
 
                 }
 
