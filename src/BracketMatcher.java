@@ -4,6 +4,8 @@ public class BracketMatcher {
     //arrays for open and closed
     char[] openarray = {'(', '[', '{', '<'};
     char[] closearray = {')', ']', '}', '>'};
+    int i = 0;
+
 
 
 
@@ -82,7 +84,7 @@ public class BracketMatcher {
             return false;
         }
         else {
-            for (int i=0; i<s.length(); i++){
+            for (i=0; i<s.length(); i++){
                 String newParen = String.valueOf(s.charAt(i)); //maybe find different way
                 if (isOpeningBracket(s.charAt(i))) {
                     openParen.push(s.charAt(i));
@@ -113,6 +115,7 @@ public class BracketMatcher {
                 return true;
             }
             else if (done == false){
+
                 System.out.println("error at: " + i);
                 return false;
 
