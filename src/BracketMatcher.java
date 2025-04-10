@@ -1,3 +1,4 @@
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class BracketMatcher {
@@ -85,6 +86,17 @@ public class BracketMatcher {
         }
         else {
             for (i=0; i<s.length(); i++){
+                if (!(isOpeningBracket(s.charAt(i)) || (isClosingBracket(s.charAt(i))))) {
+
+                    i++;
+                    System.out.println(s.charAt(i));
+                    if (i == s.length()){
+                        break;
+
+                    }
+
+                }
+
                 String newParen = String.valueOf(s.charAt(i)); //maybe find different way
                 if (isOpeningBracket(s.charAt(i))) {
                     openParen.push(s.charAt(i));
@@ -92,7 +104,7 @@ public class BracketMatcher {
 //isClosingBracket(s.charAt(i))
                 else if (openParen.isEmpty()){
 
-                    System.out.println("error at: " + i);
+                    System.out.println("error at1: " + i);
                     return false;
                 }
                 else if (isClosingBracket(s.charAt(i))) {
@@ -103,8 +115,8 @@ public class BracketMatcher {
 
                 }
 
-                else {
-                    System.out.println("error at: " + i);
+                else if (isClosingBracket(s.charAt(i))){
+                    System.out.println("error at2: " + i);
                     return false;
                 }
 
@@ -117,7 +129,7 @@ public class BracketMatcher {
             }
             else if (done == false){
 
-                System.out.println("error at: " + i);
+                System.out.println("error at3: " + i);
                 return false;
 
             }
